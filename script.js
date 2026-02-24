@@ -3,15 +3,14 @@ const modal = document.getElementById("modal");
 const nsfwBtn = document.getElementById("nsfw");
 const yes18 = document.getElementById("yes18");
 const no18 = document.getElementById("no18");
-const modalRow = document.getElementById("modalRow");
 
 function toast(msg){
   toastEl.textContent = msg;
   toastEl.classList.add("show");
-  setTimeout(()=>toastEl.classList.remove("show"), 1600);
+  setTimeout(() => toastEl.classList.remove("show"), 1600);
 }
 
-// rotating goofy status
+/* rotating goofy status */
 const statuses = [
   "currently: missing shots 🎯",
   "currently: delusional 💕",
@@ -19,17 +18,36 @@ const statuses = [
   "currently: bottom frag but cute",
   "currently: chamber simp (allegedly)"
 ];
-setInterval(()=>{
+
+setInterval(() => {
   const el = document.getElementById("status");
   if (!el) return;
-  el.textContent = statuses[Math.floor(Math.random()*statuses.length)];
+  el.textContent = statuses[Math.floor(Math.random() * statuses.length)];
 }, 2500);
 
-// open modal
+/* open modal */
 nsfwBtn.addEventListener("click", () => {
   modal.style.display = "flex";
+  modal.setAttribute("aria-hidden", "false");
   toast("🔞 warning: silliness ahead");
 });
+
+/* close modal if click outside */
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+    modal.setAttribute("aria-hidden", "true");
+  }
+});
+
+/* NO = just close */
+no18.addEventListener("click", () => {
+  modal.style.display = "none";
+  modal.setAttribute("aria-hidden", "true");
+  toast("good choice pookie 😭💗");
+});
+
+/* wee-woo beep using Web Audio */
 function playSirenBeep(){
   try{
     const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -47,54 +65,28 @@ function playSirenBeep(){
       o.stop(ctx.currentTime + t + 0.12);
     };
 
-    // wee-woo wee-woo
+    // wee-woo pattern
     beep(880, 0.00);
     beep(660, 0.14);
     beep(880, 0.30);
     beep(660, 0.44);
 
-    setTimeout(()=>ctx.close(), 900);
-  } catch(e){
-    // if browser blocks audio, just ignore
+    setTimeout(() => ctx.close(), 900);
+  } catch (e) {
   }
 }
-// close modal if you click outside the box
-modal.addEventListener("click", (e)=>{
-  if (e.target === modal) modal.style.display = "none";
-});
 
-// NO runs away (inside the modal row)
-function runAway(){
-  const r = modalRow.getBoundingClientRect();
-  const pad = 6;
-
-  const maxX = r.width - no18.offsetWidth - pad*2;
-  const maxY = r.height - no18.offsetHeight - pad*2;
-
-  const x = Math.max(pad, Math.random()*maxX + pad);
-  const y = Math.max(pad, Math.random()*maxY + pad);
-
-  no18.style.position = "absolute";
-  no18.style.left = x + "px";
-  no18.style.top = y + "px";
-
-  toast("nice try 😭");
-}
-
-no18.addEventListener("click", () => {
-  modal.style.display = "none";
-  toast("good choice pookie 😭💗");
-});
-
-playSirenBeep();
-// YES triggers FBI overlay
+/* YES = FBI overlay + siren flash + sound */
 yes18.addEventListener("click", () => {
   modal.style.display = "none";
+  modal.setAttribute("aria-hidden", "true");
+
+  playSirenBeep();
 
   const fbi = document.createElement("div");
   fbi.className = "fbi";
-  fbi.innerHTML = `🚨 FBI OPEN UP 🚨<small>stop gooning. drink water.</small>`;
+  fbi.innerHTML = `<div class="inner">🚨 FBI OPEN UP 🚨<small>stop gooning. drink water.</small></div>`;
   document.body.appendChild(fbi);
 
-  setTimeout(()=>fbi.remove(), 2400);
+  setTimeout(() => fbi.remove(), 2400);
 });
