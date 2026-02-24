@@ -16,61 +16,97 @@ const statuses = [
   "currently: delusional 💕",
   "currently: pretending i’m mysterious",
   "currently: bottom frag but cute",
-  "currently: chamber simp (allegedly)"
+  "currently: hi pookies.exe running…"
 ];
 
 setInterval(() => {
   const el = document.getElementById("status");
   if (!el) return;
   el.textContent = statuses[Math.floor(Math.random() * statuses.length)];
-}, 6000); // slower: 6s
+}, 6000);
 
-/* ===== ROTATING HERO BANNER ===== */
-const bannerImages = [
-  "https://media.tenor.com/9aVn3p9d8mMAAAAC/anime-blush.gif",
-  "https://media.tenor.com/8QKQ9hK0o7UAAAAC/anime-love.gif",
-  "https://media.tenor.com/5b4vRZV2K9wAAAAC/anime-smile.gif"
-  // replace these with your own later
+/* ===== HUSBANDS: spotlight rotation + gentle position swap =====
+   Replace image URLs with real ones later.
+*/
+const husbands = [
+  { name: "Chamber (my lawyer)", img: "https://media.tenor.com/your-chamber-gif.gif" },
+  { name: "random fav", img: "https://media.tenor.com/another-gif.gif" },
+  { name: "emotionally unavailable", img: "https://media.tenor.com/another.gif" }
 ];
 
-const bannerImg = document.getElementById("bannerImg");
-const bannerDots = document.getElementById("bannerDots");
-let bannerIndex = 0;
+let order = [0, 1, 2];     // display order indices
+let spotlight = 0;         // which position is spotlighted (0/1/2)
+
+const grid = document.getElementById("husbandGrid");
+const dots = document.getElementById("husbandDots");
+const shuffleBtn = document.getElementById("shuffleBtn");
 
 function renderDots(){
-  bannerDots.innerHTML = "";
-  for (let i = 0; i < bannerImages.length; i++){
+  dots.innerHTML = "";
+  for (let i = 0; i < 3; i++){
     const d = document.createElement("div");
-    d.className = "dot" + (i === bannerIndex ? " active" : "");
-    d.addEventListener("click", () => {
-      bannerIndex = i;
-      swapBanner(true);
-    });
-    bannerDots.appendChild(d);
+    d.className = "dot-ind" + (i === spotlight ? " active" : "");
+    dots.appendChild(d);
   }
 }
 
-function swapBanner(userClicked = false){
-  // zoom reset then re-apply
-  bannerImg.classList.remove("zoom");
-  setTimeout(() => {
-    bannerImg.src = bannerImages[bannerIndex];
-    bannerImg.classList.add("zoom");
-    renderDots();
-  }, 180);
+function renderHusbands(){
+  grid.innerHTML = "";
 
-  // optional little toast on click
-  if (userClicked) toast("ok pookie 😭💗");
+  for (let pos = 0; pos < 3; pos++){
+    const idx = order[pos];
+    const item = husbands[idx];
+
+    const card = document.createElement("div");
+    card.className = "husband-card" + (pos === spotlight ? " spotlight" : "");
+
+    const img = document.createElement("img");
+    img.src = item.img;
+    img.alt = item.name;
+
+    const name = document.createElement("div");
+    name.className = "husband-name";
+    name.textContent = item.name;
+
+    card.appendChild(img);
+    card.appendChild(name);
+    grid.appendChild(card);
+  }
+
+  renderDots();
 }
 
-function rotateBanner(){
-  bannerIndex = (bannerIndex + 1) % bannerImages.length;
-  swapBanner(false);
+/* gentle swap: rotate order and move spotlight */
+function tickRotate(){
+  // rotate the displayed order (gentle swap)
+  order = [order[2], order[0], order[1]];
+
+  // move spotlight to next position
+  spotlight = (spotlight + 1) % 3;
+
+  renderHusbands();
 }
 
-renderDots();
-bannerImg.classList.add("zoom");
-setInterval(rotateBanner, 4500); // rotate every 4.5s
+/* shuffle button */
+function fisherYatesShuffle(arr){
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+shuffleBtn.addEventListener("click", () => {
+  order = fisherYatesShuffle(order);
+  spotlight = Math.floor(Math.random() * 3);
+  renderHusbands();
+  toast("re-rolling my type 🎀😭");
+});
+
+/* initial render + auto rotate */
+renderHusbands();
+setInterval(tickRotate, 5000);
 
 /* ===== NSFW modal ===== */
 nsfwBtn.addEventListener("click", () => {
@@ -86,7 +122,7 @@ modal.addEventListener("click", (e) => {
   }
 });
 
-/* NO closes modal (no run away) */
+/* NO closes modal */
 no18.addEventListener("click", () => {
   modal.style.display = "none";
   modal.setAttribute("aria-hidden", "true");
@@ -104,7 +140,7 @@ function playSirenBeep(){
       const g = ctx.createGain();
       o.type = "square";
       o.frequency.value = freq;
-      g.gain.value = 0.04; // volume
+      g.gain.value = 0.04;
       o.connect(g);
       g.connect(ctx.destination);
       o.start(ctx.currentTime + t);
