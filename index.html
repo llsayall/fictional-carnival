@@ -8,48 +8,68 @@
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/fictional-carnival/style.css?v=3">
+  <!-- CSS (absolute path + cache bust) -->
+  <link rel="stylesheet" href="/fictional-carnival/style.css?v=6">
 </head>
 
 <body>
   <div class="sparkles"></div>
 
-  <main class="card">
-    <h1>hi pookies <br> ♡ click at your own risk ♡</h1>
-    <div class="sub" id="status">currently: missing shots 🎯</div>
+  <div class="layout">
+    <!-- MAIN -->
+    <main class="card">
+      <h1>hi pookies <br> ♡ click at your own risk ♡</h1>
+      <div class="sub" id="status">currently: missing shots 🎯</div>
 
-    <div class="gif">
-      <img src="https://media.tenor.com/9aVn3p9d8mMAAAAC/anime-blush.gif" alt="gif">
-    </div>
+      <!-- BIG rotating hero banner -->
+      <section class="banner" aria-label="Rotating banner">
+        <img id="bannerImg"
+             src="https://media.tenor.com/9aVn3p9d8mMAAAAC/anime-blush.gif"
+             alt="banner">
+        <div class="banner-dots" id="bannerDots" aria-hidden="true"></div>
+      </section>
 
-    <h3>my fictional husbands</h3>
+      <h3 class="section-title">my fictional husbands</h3>
 
-    <div class="char-grid">
-      <div class="char">
-        
-        <img src="https://media.tenor.com/your-chamber-gif.gif" alt="Chamber">
-        <span>Chamber (my lawyer)</span>
+      <div class="char-grid">
+        <div class="char">
+          <img src="https://media.tenor.com/your-chamber-gif.gif" alt="Chamber">
+          <span>Chamber (my lawyer)</span>
+        </div>
+        <div class="char">
+          <img src="https://media.tenor.com/another-gif.gif" alt="Fav">
+          <span>random fav</span>
+        </div>
+        <div class="char">
+          <img src="https://media.tenor.com/another.gif" alt="Fav2">
+          <span>emotionally unavailable</span>
+        </div>
       </div>
-      <div class="char">
-        <img src="https://media.tenor.com/another-gif.gif" alt="Fav">
-        <span>random fav</span>
-      </div>
-      <div class="char">
-        <img src="https://media.tenor.com/another.gif" alt="Fav2">
-        <span>emotionally unavailable</span>
-      </div>
-    </div>
 
-    <button class="btn" id="nsfw">🚨 NSFW (18+)</button>
+      <button class="btn" id="nsfw" type="button">🚨 NSFW (18+)</button>
 
-    <div class="tiny">
-      built with love & zero aim ✨<br>
-      if i miss it’s because i’m shy (and lag)
-    </div>
-  </main>
+      <div class="tiny">
+        built with love & zero aim ✨<br>
+        if i miss it’s because i’m shy (and lag)
+      </div>
+    </main>
+
+    <!-- RIGHT LINKS PANEL -->
+    <aside class="side">
+      <div class="side-card">
+        <div class="side-title">links</div>
+
+        <!-- replace these with your real links -->
+        <a class="side-link" href="https://instagram.com" target="_blank" rel="noreferrer">🎀 instagram</a>
+        <a class="side-link" href="https://spotify.com" target="_blank" rel="noreferrer">💌 spotify</a>
+        <a class="side-link" href="https://paypal.me/" target="_blank" rel="noreferrer">💸 paypal</a>
+
+        <div class="side-note">pls be nice i’m sensitive 🫧</div>
+      </div>
+    </aside>
+  </div>
 
   <!-- NSFW modal -->
   <div class="modal" id="modal" aria-hidden="true">
@@ -65,12 +85,7 @@
 
   <div class="toast" id="toast"></div>
 
-  <!-- JS -->
-  <script src="/fictional-carnival/script.js?v=3"></script>
-</body>
-</html>
-
-  <div class="toast" id="toast"></div>
- <script src="/fictional-carnival/script.js?v=2"></script>
+  <!-- JS (absolute path + cache bust) -->
+  <script src="/fictional-carnival/script.js?v=6"></script>
 </body>
 </html>
