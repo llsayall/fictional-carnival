@@ -1,33 +1,57 @@
-<h1>hi pookies ♡ click at your own risk ♡ </h1>
-<div class="sub" id="status">currently: missing shots 🎯</div>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>hi pookies ♡</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-<div class="gif">
-  <img src="https://media.tenor.com/9aVn3p9d8mMAAAAC/anime-blush.gif">
-</div>
+<body>
+  <div class="sparkles"></div>
+  <main class="card">
+    <h1>hi pookies ♡ click at your own risk ♡</h1>
+    <div class="sub" id="status">currently: missing shots 🎯</div>
 
-<h3 style="margin-top:16px;color:#ff6fa8;">🎮 my fictional husbands</h3>
-<div class="char-grid">
-  <div class="char">
-    <img src="https://media.tenor.com/your-chamber-gif.gif">
-    <span>Chamber (my lawyer)</span>
-  </div>
-  <div class="char">
-    <img src="https://media.tenor.com/another-gif.gif">
-    <span>random fav</span>
-  </div>
-  <div class="char">
-    <img src="https://media.tenor.com/another.gif">
-    <span>emotionally unavailable</span>
-  </div>
-</div>
+    <div class="gif">
+      <img src="https://media.tenor.com/9aVn3p9d8mMAAAAC/anime-blush.gif" alt="gif">
+    </div>
 
-<button class="btn" id="nsfw">🚨 NSFW (18+)</button>
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <h2>🔞 are you 18?</h2>
-      <div class="modal-row">
+    <h3>my fictional husbands</h3>
+    <div class="char-grid">
+      <div class="char">
+        <img src="https://media.tenor.com/your-chamber-gif.gif" alt="Chamber">
+        <span>Chamber (my lawyer)</span>
+      </div>
+      <div class="char">
+        <img src="https://media.tenor.com/another-gif.gif" alt="fav">
+        <span>random fav</span>
+      </div>
+      <div class="char">
+        <img src="https://media.tenor.com/another.gif" alt="fav2">
+        <span>emotionally unavailable</span>
+      </div>
+    </div>
+
+    <button class="btn" id="nsfw">🚨 NSFW (18+)</button>
+
+    <div class="tiny">
+      built with love & zero aim ✨<br>
+      if i miss it’s because i’m shy (and lag)
+    </div>
+  </main>
+
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <h2>🔞 are you 18?</h2>
+      <div class="modal-row" id="modalRow">
         <button class="btn" id="yes18">yes</button>
         <button class="btn nope" id="no18">no</button>
       </div>
     </div>
-</div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
