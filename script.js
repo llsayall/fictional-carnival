@@ -54,11 +54,10 @@ function runAway(){
   toast("nice try 😭");
 }
 
-no18.addEventListener("mouseenter", runAway);
-no18.addEventListener("touchstart", (e)=>{
-  e.preventDefault();
-  runAway();
-}, {passive:false});
+no18.addEventListener("click", () => {
+  modal.style.display = "none";
+  toast("good choice pookie 😭💗");
+});
 
 // YES triggers FBI overlay
 yes18.addEventListener("click", () => {
