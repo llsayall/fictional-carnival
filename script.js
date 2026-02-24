@@ -10,7 +10,7 @@ function toast(msg){
   setTimeout(() => toastEl.classList.remove("show"), 1600);
 }
 
-/* rotating goofy status */
+/* ===== STATUS (slower) ===== */
 const statuses = [
   "currently: missing shots 🎯",
   "currently: delusional 💕",
@@ -23,16 +23,62 @@ setInterval(() => {
   const el = document.getElementById("status");
   if (!el) return;
   el.textContent = statuses[Math.floor(Math.random() * statuses.length)];
-}, 2500);
+}, 6000); // slower: 6s
 
-/* open modal */
+/* ===== ROTATING HERO BANNER ===== */
+const bannerImages = [
+  "https://media.tenor.com/9aVn3p9d8mMAAAAC/anime-blush.gif",
+  "https://media.tenor.com/8QKQ9hK0o7UAAAAC/anime-love.gif",
+  "https://media.tenor.com/5b4vRZV2K9wAAAAC/anime-smile.gif"
+  // replace these with your own later
+];
+
+const bannerImg = document.getElementById("bannerImg");
+const bannerDots = document.getElementById("bannerDots");
+let bannerIndex = 0;
+
+function renderDots(){
+  bannerDots.innerHTML = "";
+  for (let i = 0; i < bannerImages.length; i++){
+    const d = document.createElement("div");
+    d.className = "dot" + (i === bannerIndex ? " active" : "");
+    d.addEventListener("click", () => {
+      bannerIndex = i;
+      swapBanner(true);
+    });
+    bannerDots.appendChild(d);
+  }
+}
+
+function swapBanner(userClicked = false){
+  // zoom reset then re-apply
+  bannerImg.classList.remove("zoom");
+  setTimeout(() => {
+    bannerImg.src = bannerImages[bannerIndex];
+    bannerImg.classList.add("zoom");
+    renderDots();
+  }, 180);
+
+  // optional little toast on click
+  if (userClicked) toast("ok pookie 😭💗");
+}
+
+function rotateBanner(){
+  bannerIndex = (bannerIndex + 1) % bannerImages.length;
+  swapBanner(false);
+}
+
+renderDots();
+bannerImg.classList.add("zoom");
+setInterval(rotateBanner, 4500); // rotate every 4.5s
+
+/* ===== NSFW modal ===== */
 nsfwBtn.addEventListener("click", () => {
   modal.style.display = "flex";
   modal.setAttribute("aria-hidden", "false");
   toast("🔞 warning: silliness ahead");
 });
 
-/* close modal if click outside */
 modal.addEventListener("click", (e) => {
   if (e.target === modal) {
     modal.style.display = "none";
@@ -40,14 +86,14 @@ modal.addEventListener("click", (e) => {
   }
 });
 
-/* NO = just close */
+/* NO closes modal (no run away) */
 no18.addEventListener("click", () => {
   modal.style.display = "none";
   modal.setAttribute("aria-hidden", "true");
   toast("good choice pookie 😭💗");
 });
 
-/* wee-woo beep using Web Audio */
+/* wee-woo sound */
 function playSirenBeep(){
   try{
     const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -65,18 +111,16 @@ function playSirenBeep(){
       o.stop(ctx.currentTime + t + 0.12);
     };
 
-    // wee-woo pattern
     beep(880, 0.00);
     beep(660, 0.14);
     beep(880, 0.30);
     beep(660, 0.44);
 
     setTimeout(() => ctx.close(), 900);
-  } catch (e) {
-  }
+  } catch (e) {}
 }
 
-/* YES = FBI overlay + siren flash + sound */
+/* YES triggers FBI overlay */
 yes18.addEventListener("click", () => {
   modal.style.display = "none";
   modal.setAttribute("aria-hidden", "true");
