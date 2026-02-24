@@ -4,11 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>hi pookies ♡</title>
-<link rel="stylesheet" href="/fictional-carnival/style.css?v=2">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/fictional-carnival/style.css?v=3">
 </head>
 
 <body>
   <div class="sparkles"></div>
+
   <main class="card">
     <h1>hi pookies <br> ♡ click at your own risk ♡</h1>
     <div class="sub" id="status">currently: missing shots 🎯</div>
@@ -18,17 +26,19 @@
     </div>
 
     <h3>my fictional husbands</h3>
+
     <div class="char-grid">
       <div class="char">
+        
         <img src="https://media.tenor.com/your-chamber-gif.gif" alt="Chamber">
         <span>Chamber (my lawyer)</span>
       </div>
       <div class="char">
-        <img src="https://media.tenor.com/another-gif.gif" alt="fav">
+        <img src="https://media.tenor.com/another-gif.gif" alt="Fav">
         <span>random fav</span>
       </div>
       <div class="char">
-        <img src="https://media.tenor.com/another.gif" alt="fav2">
+        <img src="https://media.tenor.com/another.gif" alt="Fav2">
         <span>emotionally unavailable</span>
       </div>
     </div>
@@ -41,15 +51,24 @@
     </div>
   </main>
 
-  <div class="modal" id="modal">
-    <div class="modal-box">
+  <!-- NSFW modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-label="Age check">
       <h2>🔞 are you 18?</h2>
-      <div class="modal-row" id="modalRow">
-        <button class="btn" id="yes18">yes</button>
-        <button class="btn nope" id="no18">no</button>
+      <div class="modal-row">
+        <button class="btn" id="yes18" type="button">yes</button>
+        <button class="btn nope" id="no18" type="button">no</button>
       </div>
+      <p class="modal-note">no judgement. just vibes.</p>
     </div>
   </div>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- JS -->
+  <script src="/fictional-carnival/script.js?v=3"></script>
+</body>
+</html>
 
   <div class="toast" id="toast"></div>
  <script src="/fictional-carnival/script.js?v=2"></script>
