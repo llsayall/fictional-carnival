@@ -198,3 +198,63 @@ h3{ margin:16px 0 8px; color:#ff6fa8; font-size:14px; }
   font-size:16px;
   letter-spacing:0;
 }
+/* FBI siren overlay */
+.fbi{
+  position:fixed;
+  inset:0;
+  background:#b30000;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  z-index:900;
+  padding:24px;
+  font-weight:900;
+  letter-spacing:.5px;
+  font-size:26px;
+  overflow:hidden;
+}
+
+/* siren flashes */
+.fbi::before,
+.fbi::after{
+  content:"";
+  position:absolute;
+  top:0; bottom:0;
+  width:55%;
+  opacity:.35;
+  filter: blur(0px);
+  animation: siren 220ms infinite alternate;
+}
+
+.fbi::before{
+  left:-10%;
+  background: linear-gradient(90deg, rgba(255,0,0,.9), transparent);
+}
+
+.fbi::after{
+  right:-10%;
+  background: linear-gradient(270deg, rgba(0,140,255,.9), transparent);
+  animation-delay: 110ms;
+}
+
+@keyframes siren{
+  from{ opacity:.15; }
+  to{ opacity:.55; }
+}
+
+.fbi small{
+  display:block;
+  margin-top:12px;
+  font-weight:700;
+  font-size:16px;
+  letter-spacing:0;
+  position:relative;
+  z-index:2;
+}
+
+.fbi .inner{
+  position:relative;
+  z-index:2;
+}
