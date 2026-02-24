@@ -15,75 +15,71 @@
 </head>
 
 <body>
-  <div class="sparkles"></div>
+ <div class="sparkles"></div>
 
-  <div class="layout">
-    <!-- MAIN -->
-    <main class="card">
-      <h1>hi pookies <br> ♡ click at your own risk ♡</h1>
-      <div class="sub" id="status">currently: missing shots 🎯</div>
+<div class="layout">
+  <main class="card">
+    <h1>hi pookies<br>♡ click at your own risk ♡</h1>
+    <div class="sub" id="status">currently: pretending i’m mysterious</div>
 
-      <!-- BIG rotating hero banner -->
-      <section class="banner" aria-label="Rotating banner">
-        <img id="bannerImg"
-             src="https://media.tenor.com/9aVn3p9d8mMAAAAC/anime-blush.gif"
-             alt="banner">
-        <div class="banner-dots" id="bannerDots" aria-hidden="true"></div>
-      </section>
+    <section class="banner" aria-label="Rotating banner">
+      <img id="bannerImg"
+           src="https://media.tenor.com/9aVn3p9d8mMAAAAC/anime-blush.gif"
+           alt="banner">
+      <div class="banner-dots" id="bannerDots"></div>
+    </section>
 
-      <h3 class="section-title">my fictional husbands</h3>
+    <h3 class="section-title">my fictional husbands</h3>
 
-      <div class="char-grid">
-        <div class="char">
-          <img src="https://media.tenor.com/your-chamber-gif.gif" alt="Chamber">
-          <span>Chamber (my lawyer)</span>
-        </div>
-        <div class="char">
-          <img src="https://media.tenor.com/another-gif.gif" alt="Fav">
-          <span>random fav</span>
-        </div>
-        <div class="char">
-          <img src="https://media.tenor.com/another.gif" alt="Fav2">
-          <span>emotionally unavailable</span>
-        </div>
+    <div class="char-grid">
+      <div class="char">
+        <img src="https://media.tenor.com/your-chamber-gif.gif" alt="Chamber">
+        <span>Chamber (my lawyer)</span>
       </div>
-
-      <button class="btn" id="nsfw" type="button">🚨 NSFW (18+)</button>
-
-      <div class="tiny">
-        built with love & zero aim ✨<br>
-        if i miss it’s because i’m shy (and lag)
+      <div class="char">
+        <img src="https://media.tenor.com/another-gif.gif" alt="Fav">
+        <span>random fav</span>
       </div>
-    </main>
-
-    <!-- RIGHT LINKS PANEL -->
-    <aside class="side">
-      <div class="side-card">
-        <div class="side-title">links</div>
-
-        <!-- replace these with your real links -->
-        <a class="side-link" href="https://instagram.com" target="_blank" rel="noreferrer">🎀 instagram</a>
-        <a class="side-link" href="https://spotify.com" target="_blank" rel="noreferrer">💌 spotify</a>
-        <a class="side-link" href="https://paypal.me/" target="_blank" rel="noreferrer">💸 paypal</a>
-
-        <div class="side-note">pls be nice i’m sensitive 🫧</div>
+      <div class="char">
+        <img src="https://media.tenor.com/another.gif" alt="Fav2">
+        <span>emotionally unavailable</span>
       </div>
-    </aside>
-  </div>
-
-  <!-- NSFW modal -->
-  <div class="modal" id="modal" aria-hidden="true">
-    <div class="modal-box" role="dialog" aria-modal="true" aria-label="Age check">
-      <h2>🔞 are you 18?</h2>
-      <div class="modal-row">
-        <button class="btn" id="yes18" type="button">yes</button>
-        <button class="btn nope" id="no18" type="button">no</button>
-      </div>
-      <p class="modal-note">no judgement. just vibes.</p>
     </div>
-  </div>
 
-  <div class="toast" id="toast"></div>
+    <button class="btn" id="nsfw" type="button">🚨 NSFW (18+)</button>
+
+    <div class="tiny">
+      built with love & zero aim ✨<br>
+      if i miss it’s because i’m shy (and lag)
+    </div>
+  </main>
+
+  <aside class="side">
+    <div class="side-card">
+      <div class="side-title">links</div>
+
+      <a class="side-link" href="https://instagram.com" target="_blank" rel="noreferrer">🎀 instagram</a>
+      <a class="side-link" href="https://spotify.com" target="_blank" rel="noreferrer">💌 spotify</a>
+      <a class="side-link" href="https://paypal.me/" target="_blank" rel="noreferrer">💸 paypal</a>
+
+      <div class="side-note">pls be nice i’m sensitive 🫧</div>
+    </div>
+  </aside>
+</div>
+
+<!-- NSFW modal -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-box">
+    <h2>🔞 are you 18?</h2>
+    <div class="modal-row">
+      <button class="btn" id="yes18" type="button">yes</button>
+      <button class="btn nope" id="no18" type="button">no</button>
+    </div>
+    <p class="modal-note">no judgement. just vibes.</p>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
 
   <!-- JS (absolute path + cache bust) -->
   <script src="/fictional-carnival/script.js?v=6"></script>
