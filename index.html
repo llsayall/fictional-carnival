@@ -3,90 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>hi pookies ♡</title>
+  <title>hi pookies.exe</title>
 
-  <!-- Google Font -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- CSS (absolute path + cache bust) -->
-<link rel="stylesheet" href="/fictional-carnival/style.css?v=8">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/fictional-carnival/style.css?v=9">
 </head>
 
 <body>
-<div class="sparkles"></div>
+  <div class="sparkles"></div>
 
-<div class="layout">
-  <!-- MAIN CARD -->
-  <main class="card">
-    <h1>hi pookies<br>♡ click at your own risk ♡</h1>
-    <div class="sub" id="status">currently: missing shots 🎯</div>
+  <div class="layout">
+    <!-- LEFT: Desktop window -->
+    <main class="window">
+      <div class="titlebar">
+        <div class="dots" aria-hidden="true">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
 
-    <!-- BIG HERO BANNER (rotates) -->
-    <section class="banner" aria-label="Rotating banner">
-      <img id="bannerImg"
-           src="https://media.tenor.com/9aVn3p9d8mMAAAAC/anime-blush.gif"
-           alt="banner">
-      <div class="banner-dots" id="bannerDots"></div>
-    </section>
+        <div class="titlebar-name">hi pookies.exe</div>
 
-    <h3 class="section-title">my fictional husbands</h3>
-
-    <div class="char-grid">
-      <div class="char">
-        <img src="https://media.tenor.com/your-chamber-gif.gif" alt="Chamber">
-        <span>Chamber (my lawyer)</span>
+        <div class="titlebar-right" aria-hidden="true">
+          <span class="pill">online</span>
+        </div>
       </div>
-      <div class="char">
-        <img src="https://media.tenor.com/another-gif.gif" alt="Fav">
-        <span>random fav</span>
+
+      <div class="window-body">
+        <h1>hi pookies ♡</h1>
+        <div class="subtitle">click at your own risk ♡</div>
+        <div class="sub" id="status">currently: missing shots 🎯</div>
+
+        <div class="divider"><span>🎀</span></div>
+
+        <h3 class="section-title">my fictional husbands</h3>
+
+        <!-- 3 cards shown, spotlight rotates + gentle swapping -->
+        <section class="husbands" aria-label="Favourite characters">
+          <div class="husband-grid" id="husbandGrid"></div>
+
+          <div class="husband-controls">
+            <div class="dots-row" id="husbandDots" aria-hidden="true"></div>
+            <button class="btn small" id="shuffleBtn" type="button">🎲 shuffle husbands</button>
+          </div>
+        </section>
+
+        <button class="btn" id="nsfw" type="button">🚨 NSFW (18+)</button>
+
+        <div class="tiny">
+          built with love & zero aim ✨<br>
+          if i miss it’s because i’m shy (and lag)
+        </div>
       </div>
-      <div class="char">
-        <img src="https://media.tenor.com/another.gif" alt="Fav2">
-        <span>emotionally unavailable</span>
+    </main>
+
+    <!-- RIGHT: Links panel -->
+    <aside class="side">
+      <div class="side-card">
+        <div class="side-title">links</div>
+
+        <!-- replace these -->
+        <a class="side-link" href="https://instagram.com" target="_blank" rel="noreferrer">🎀 instagram</a>
+        <a class="side-link" href="https://spotify.com" target="_blank" rel="noreferrer">💌 spotify</a>
+        <a class="side-link" href="https://paypal.me/" target="_blank" rel="noreferrer">💸 paypal</a>
+
+        <div class="side-note">pls be nice i’m sensitive 🫧</div>
       </div>
-    </div>
-
-    <button class="btn" id="nsfw" type="button">🚨 NSFW (18+)</button>
-
-    <div class="tiny">
-      built with love & zero aim ✨<br>
-      if i miss it’s because i’m shy (and lag)
-    </div>
-  </main>
-
-  <!-- RIGHT SIDE PANEL (THIS IS THE PART YOU'RE MISSING) -->
-  <aside class="side">
-    <div class="side-card">
-      <div class="side-title">links</div>
-
-      <a class="side-link" href="https://instagram.com" target="_blank" rel="noreferrer">🎀 instagram</a>
-      <a class="side-link" href="https://spotify.com" target="_blank" rel="noreferrer">💌 spotify</a>
-      <a class="side-link" href="https://paypal.me/" target="_blank" rel="noreferrer">💸 paypal</a>
-
-      <div class="side-note">pls be nice i’m sensitive 🫧</div>
-    </div>
-  </aside>
-</div>
-
-<!-- NSFW modal -->
-<div class="modal" id="modal" aria-hidden="true">
-  <div class="modal-box">
-    <h2>🔞 are you 18?</h2>
-    <div class="modal-row">
-      <button class="btn" id="yes18" type="button">yes</button>
-      <button class="btn nope" id="no18" type="button">no</button>
-    </div>
-    <p class="modal-note">no judgement. just vibes.</p>
+    </aside>
   </div>
-</div>
 
-<div class="toast" id="toast"></div>
+  <!-- NSFW modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-label="Age check">
+      <h2>🔞 are you 18?</h2>
+      <div class="modal-row">
+        <button class="btn" id="yes18" type="button">yes</button>
+        <button class="btn nope" id="no18" type="button">no</button>
+      </div>
+      <p class="modal-note">no judgement. just vibes.</p>
+    </div>
+  </div>
 
-<script src="/fictional-carnival/script.js?v=7"></script>
+  <div class="toast" id="toast"></div>
 
-  <!-- JS (absolute path + cache bust) -->
-  <script src="/fictional-carnival/script.js?v=6"></script>
+  <!-- JS -->
+  <script src="/fictional-carnival/script.js?v=9"></script>
 </body>
 </html>
