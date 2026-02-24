@@ -30,7 +30,34 @@ nsfwBtn.addEventListener("click", () => {
   modal.style.display = "flex";
   toast("🔞 warning: silliness ahead");
 });
+function playSirenBeep(){
+  try{
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const ctx = new AudioContext();
 
+    const beep = (freq, t) => {
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = "square";
+      o.frequency.value = freq;
+      g.gain.value = 0.04; // volume
+      o.connect(g);
+      g.connect(ctx.destination);
+      o.start(ctx.currentTime + t);
+      o.stop(ctx.currentTime + t + 0.12);
+    };
+
+    // wee-woo wee-woo
+    beep(880, 0.00);
+    beep(660, 0.14);
+    beep(880, 0.30);
+    beep(660, 0.44);
+
+    setTimeout(()=>ctx.close(), 900);
+  } catch(e){
+    // if browser blocks audio, just ignore
+  }
+}
 // close modal if you click outside the box
 modal.addEventListener("click", (e)=>{
   if (e.target === modal) modal.style.display = "none";
@@ -59,6 +86,7 @@ no18.addEventListener("click", () => {
   toast("good choice pookie 😭💗");
 });
 
+playSirenBeep();
 // YES triggers FBI overlay
 yes18.addEventListener("click", () => {
   modal.style.display = "none";
