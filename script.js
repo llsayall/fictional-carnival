@@ -29,7 +29,7 @@ setInterval(() => {
    Replace image URLs with real ones later.
 */
 const husbands = [
-  { name: "Chamber (my lawyer)", img: "https://i.pinimg.com/736x/a3/6a/60/a36a60508776d7b7a29e71255479aec5.jpg" },
+  { name: "Chamber (my lawyer)", img: "" },
   { name: "random fav", img: "https://media.tenor.com/another-gif.gif" },
   { name: "emotionally unavailable", img: "https://media.tenor.com/another.gif" }
 ];
